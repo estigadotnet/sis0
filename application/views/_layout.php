@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Dashboard</title>
+  <!-- <title>AdminLTE 3 | Dashboard</title> -->
+  <title><?php echo SITE_NAME . ': ' . ucfirst($this->uri->segment(1)) . " - " . ucfirst($this->uri->segment(2)); ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -33,12 +34,13 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
+    <!-- <a href="#" class="navbar-brand mr-1 text-sm"><?php echo SITE_NAME; ?></a> -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="<?php echo site_url(); ?>" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -176,39 +178,50 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+
+          <!-- dashboard -->
+          <li class="nav-item" <?php echo $this->uri->segment(2) == '' ? 'active' : ''; ?>>
+            <!-- <a href="./index.html" class="nav-link active"> -->
+            <a href="<?php echo site_url('dashboard'); ?>" class="nav-link "> <!-- active -->
+              <i class="fas fa-tachometer-alt nav-icon"></i>
+              <p>Dashboard (Demo)</p>
+            </a>
+          </li>
+
+          <!-- setup -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-database"></i>
               <p>
-                Dashboard
+                Setup
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <!-- <a href="./index.html" class="nav-link active"> -->
-                <a href="<?php echo site_url('dashboard'); ?>" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+              <li class="nav-item" <?php echo $this->uri->segment(2) == 's01_sklh' ? 'active' : ''; ?>>
+                <a href="pages/charts/chartjs.html" class="nav-link">
+                  <i class="fas fa-school nav-icon"></i>
+                  <p>Sekolah</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="pages/charts/flot.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
+                  <p>Flot</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="pages/charts/inline.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
+                  <p>Inline</p>
                 </a>
               </li>
             </ul>
           </li>
+
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -740,7 +753,8 @@
             $this->load->view($_view);
         ?>
 
-      </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
