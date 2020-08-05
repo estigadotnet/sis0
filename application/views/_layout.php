@@ -101,6 +101,12 @@
               <p>Sekolah</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('s03_kls'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 's03_kls' ? 'active' : ''; ?>">
+              <i class="fas fa-door-open nav-icon"></i>
+              <p>Kelas</p>
+            </a>
+          </li>
 
         </ul>
       </nav>
