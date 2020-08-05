@@ -124,7 +124,7 @@
           <li class="nav-header"></li>
           <!-- Login or logout -->
           <li class="nav-item">
-            <?php if ($this->session->userdata("tahun_ajaran") != "") { ?>
+            <?php if ($this->session->userdata("idthaj") != "") { ?>
             <a href="<?php echo site_url('auth/logout'); ?>" class="nav-link">
               <i class="fas fa-sign-out-alt nav-icon"></i>
               <p>Logout</p>

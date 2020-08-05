@@ -70,6 +70,16 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('identity', str_replace(':', '', $this->lang->line('login_identity_label')), 'required');
 		$this->form_validation->set_rules('password', str_replace(':', '', $this->lang->line('login_password_label')), 'required');
 
+		// check combo tahun ajaran
+		$this->form_validation->set_rules('idthaj', 'Tahun Ajaran',
+			array("required", array("f_check_tahun_ajaran", function($tahun_ajaran) {return $tahun_ajaran != "Tahun Ajaran";})),
+			array("f_check_tahun_ajaran" => "Tahun Ajaran harus terisi !"));
+
+		// check combo sekolah
+		$this->form_validation->set_rules('idsklh', 'Sekolah',
+			array("required", array("f_check_sekolah", function($sekolah) {return $sekolah != "Sekolah";})),
+			array("f_check_sekolah" => "Sekolah harus terisi !"));
+
 		if ($this->form_validation->run() === TRUE)
 		{
 			// check to see if the user is logging in
@@ -80,6 +90,21 @@ class Auth extends CI_Controller
 			{
 				//if the login is successful
 				//redirect them back to the home page
+
+				// simpan session idthaj
+				$this->load->model('S01_thaj_model');
+				$s01_thaj = $this->S01_thaj_model->get_by_id($this->input->post('idthaj'));
+				$this->session->set_userdata('idthaj', $this->input->post('idthaj'));
+				$this->session->set_userdata('tahun_ajaran', $s01_thaj->TahunAjaran);
+				$this->session->set_userdata('saldo_awal', $s01_thaj->SaldoAwal);
+
+				// simpan session idsklh
+				$this->load->model('S02_sklh_model');
+				$s02_sklh = $this->S02_sklh_model->get_by_id($this->input->post('idsklh'));
+				$this->session->set_userdata('idsklh', $this->input->post('idsklh'));
+				$this->session->set_userdata('kode_sklh', $s02_sklh->Kode);
+				$this->session->set_userdata('nama_sklh', $s02_sklh->Nama);
+
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 				redirect('/', 'refresh');
 			}
@@ -112,8 +137,11 @@ class Auth extends CI_Controller
 
 			// ambil data tahun ajaran
 			$this->load->model('S01_thaj_model');
-			$s01_thaj = $this->S01_thaj_model->get_all();
-			$this->data['s01_thaj'] = $s01_thaj;
+			$this->data['s01_thaj'] = $this->S01_thaj_model->get_all();
+
+			// ambil data sekolah
+			$this->load->model('S02_sklh_model');
+			$this->data['s02_sklh'] = $this->S02_sklh_model->get_all();
 
 			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'login', $this->data);
 		}

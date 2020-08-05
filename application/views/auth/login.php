@@ -32,8 +32,8 @@
 
       <div id="infoMessage"><?php echo $message;?></div>
 
-      <?php echo form_open("auth/login");?>
       <!-- <form action="../../index3.html" method="post"> -->
+      <?php echo form_open("auth/login");?>
 
         <!-- username -->
         <div class="input-group mb-3">
@@ -62,12 +62,13 @@
         <!-- tahun ajaran -->
         <?php //echo pre($s01_thaj); ?>
         <div class="input-group mb-3">
-            <select class="form-control" name="tahun_ajaran">
+            <select class="form-control" name="idthaj">
               <option>Tahun Ajaran</option>
-              <option>option 2</option>
-              <option>option 3</option>
-              <option>option 4</option>
-              <option>option 5</option>
+              <?php foreach ($s01_thaj as $r) {
+                ?>
+                <option value="<?php echo $r->idthaj; ?>"><?php echo $r->TahunAjaran; ?></option>
+                <?php
+              } ?>
             </select>
             <div class="input-group-append">
               <div class="input-group-text">
@@ -79,12 +80,13 @@
         <!-- sekolah -->
         <?php //echo pre($s01_thaj); ?>
         <div class="input-group mb-3">
-            <select class="form-control" name="sekolah">
+            <select class="form-control" name="idsklh">
               <option>Sekolah</option>
-              <option>option 2</option>
-              <option>option 3</option>
-              <option>option 4</option>
-              <option>option 5</option>
+              <?php foreach ($s02_sklh as $r) {
+                ?>
+                <option value="<?php echo $r->idsklh; ?>"><?php echo $r->Nama; ?></option>
+                <?php
+              } ?>
             </select>
             <div class="input-group-append">
               <div class="input-group-text">
@@ -94,15 +96,6 @@
         </div>
 
         <div class="row">
-          <!-- <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div> -->
-          <!-- /.col -->
           <div class="col">
             <!-- <p><?php //echo form_submit('submit', lang('login_submit_btn'));?></p> -->
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
@@ -110,8 +103,8 @@
           <!-- /.col -->
         </div>
 
-      <?php echo form_close();?>
       <!-- </form> -->
+      <?php echo form_close();?>
 
       <!-- <div class="social-auth-links text-center mb-3">
         <p>- OR -</p>
