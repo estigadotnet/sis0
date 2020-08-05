@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- <title>AdminLTE 3 | Dashboard</title> -->
   <!-- <title><?php //echo SITE_NAME . ': ' . ucfirst($this->uri->segment(1)) . " - " . ucfirst($this->uri->segment(2)); ?></title> -->
-  <title><?php echo SITE_NAME . ': ' . ucfirst($_caption) . ucfirst(isset($button) ? ' - ' . $button : ''); ?></title>
+  <title><?php echo SITE_NAME . ' | ' . ucfirst($_caption) . ucfirst(isset($button) ? ' - ' . $button : ''); ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -58,7 +58,7 @@
     <a href="<?php echo site_url(); ?>" class="brand-link">
       <img src="<?php echo base_url(); ?>assets/adminlte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light"><?php echo SITE_NAME; ?></span>
+      <span class="brand-text "><?php echo "<b>" . SITE_NAME . "</b>" . ' ' . SITE_VERSION; ?></span>
     </a>
 
     <!-- Sidebar -->
@@ -120,6 +120,23 @@
             </a>
           </li>
 
+          <!-- divider -->
+          <li class="nav-header"></li>
+          <!-- Login or logout -->
+          <li class="nav-item">
+            <?php if ($this->session->userdata("tahun_ajaran") != "") { ?>
+            <a href="<?php echo site_url('auth/logout'); ?>" class="nav-link">
+              <i class="fas fa-sign-out-alt nav-icon"></i>
+              <p>Logout</p>
+            </a>
+            <?php } else { ?>
+              <a href="<?php echo site_url('auth/login'); ?>" class="nav-link">
+                <i class="fas fa-sign-in-alt nav-icon"></i>
+                <p>Login</p>
+              </a>
+            <?php }?>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -179,10 +196,10 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; <?php echo date('Y'); ?> <a href="https://one-tech-computer.business.site/" target="_blank">OneTech System Solution</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.5
+      <b><?php echo SITE_NAME; ?> </b> <?php echo SITE_VERSION; ?>
     </div>
   </footer>
 
