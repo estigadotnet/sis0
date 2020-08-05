@@ -90,15 +90,15 @@
           <!-- setup -->
           <li class="nav-header">SETUP</li>
           <li class="nav-item">
-            <a href="<?php echo site_url('s01_sklh'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 's01_sklh' ? 'active' : ''; ?>">
-              <i class="fas fa-school nav-icon"></i>
-              <p>Sekolah</p>
+            <a href="<?php echo site_url('s01_thaj'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 's01_thaj' ? 'active' : ''; ?>">
+              <i class="far fa-calendar-alt nav-icon"></i>
+              <p>Tahun Ajaran</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo site_url('s02_thaj'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 's02_thaj' ? 'active' : ''; ?>">
-              <i class="far fa-calendar-alt nav-icon"></i>
-              <p>Tahun Ajaran</p>
+            <a href="<?php echo site_url('s02_sklh'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 's02_sklh' ? 'active' : ''; ?>">
+              <i class="fas fa-school nav-icon"></i>
+              <p>Sekolah</p>
             </a>
           </li>
 

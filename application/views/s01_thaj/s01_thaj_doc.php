@@ -23,13 +23,13 @@
             		<th>TahunAjaran</th>
             		<th>SaldoAwal</th>
             </tr><?php
-            foreach ($s02_thaj_data as $s02_thaj)
+            foreach ($s01_thaj_data as $s01_thaj)
             {
                 ?>
                 <tr>
           		      <td><?php echo ++$start ?></td>
-          		      <td><?php echo $s02_thaj->TahunAjaran ?></td>
-          		      <td><?php echo $s02_thaj->SaldoAwal ?></td>
+          		      <td><?php echo $s01_thaj->TahunAjaran ?></td>
+          		      <td><?php echo $s01_thaj->SaldoAwal ?></td>
                 </tr>
                 <?php
             }

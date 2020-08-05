@@ -23,13 +23,13 @@
             		<th>Kode</th>
             		<th>Nama</th>
             </tr><?php
-            foreach ($s01_sklh_data as $s01_sklh)
+            foreach ($s02_sklh_data as $s02_sklh)
             {
                 ?>
                 <tr>
           		      <td><?php echo ++$start ?></td>
-          		      <td><?php echo $s01_sklh->Kode ?></td>
-          		      <td><?php echo $s01_sklh->Nama ?></td>
+          		      <td><?php echo $s02_sklh->Kode ?></td>
+          		      <td><?php echo $s02_sklh->Nama ?></td>
                 </tr>
                 <?php
             }
