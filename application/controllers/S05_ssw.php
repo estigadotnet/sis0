@@ -16,7 +16,7 @@ class S05_ssw extends CI_Controller
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
-        
+
         if ($q <> '') {
             $config['base_url'] = base_url() . 's05_ssw/index.html?q=' . urlencode($q);
             $config['first_url'] = base_url() . 's05_ssw/index.html?q=' . urlencode($q);
@@ -40,38 +40,45 @@ class S05_ssw extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
-        $this->load->view('s05_ssw/s05_ssw_list', $data);
+        $data['_view']    = 's05_ssw/s05_ssw_list';
+        $data['_caption'] = 'Siswa';
+        $this->load->view('_layout', $data);
     }
 
-    public function read($id) 
+    public function read($id)
     {
         $row = $this->S05_ssw_model->get_by_id($id);
         if ($row) {
             $data = array(
-		'idsiswa' => $row->idsiswa,
-		'NIS' => $row->NIS,
-		'Nama' => $row->Nama,
-	    );
-            $this->load->view('s05_ssw/s05_ssw_read', $data);
+		            'idsiswa' => $row->idsiswa,
+            		'NIS' => $row->NIS,
+            		'Nama' => $row->Nama,
+              );
+            $data['button']   = 'Read';
+            $data['_view']    = 's05_ssw/s05_ssw_read';
+            $data['_caption'] = 'Siswa';
+            $this->load->view('_layout', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('s05_ssw'));
         }
     }
 
-    public function create() 
+    public function create()
     {
         $data = array(
             'button' => 'Create',
             'action' => site_url('s05_ssw/create_action'),
-	    'idsiswa' => set_value('idsiswa'),
-	    'NIS' => set_value('NIS'),
-	    'Nama' => set_value('Nama'),
-	);
-        $this->load->view('s05_ssw/s05_ssw_form', $data);
+            'idsiswa' => set_value('idsiswa'),
+            'NIS' => set_value('NIS'),
+            'Nama' => set_value('Nama'),
+          );
+        $data['_view']    = 's05_ssw/s05_ssw_form';
+        $data['_caption'] = 'Siswa';
+        $this->load->view('_layout', $data);
     }
-    
-    public function create_action() 
+
+    public function create_action()
     {
         $this->_rules();
 
@@ -79,17 +86,16 @@ class S05_ssw extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'NIS' => $this->input->post('NIS',TRUE),
-		'Nama' => $this->input->post('Nama',TRUE),
-	    );
-
+                'NIS' => $this->input->post('NIS',TRUE),
+                'Nama' => $this->input->post('Nama',TRUE),
+              );
             $this->S05_ssw_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('s05_ssw'));
         }
     }
-    
-    public function update($id) 
+
+    public function update($id)
     {
         $row = $this->S05_ssw_model->get_by_id($id);
 
@@ -97,18 +103,20 @@ class S05_ssw extends CI_Controller
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('s05_ssw/update_action'),
-		'idsiswa' => set_value('idsiswa', $row->idsiswa),
-		'NIS' => set_value('NIS', $row->NIS),
-		'Nama' => set_value('Nama', $row->Nama),
-	    );
-            $this->load->view('s05_ssw/s05_ssw_form', $data);
+            		'idsiswa' => set_value('idsiswa', $row->idsiswa),
+            		'NIS' => set_value('NIS', $row->NIS),
+            		'Nama' => set_value('Nama', $row->Nama),
+              );
+            $data['_view']    = 's05_ssw/s05_ssw_form';
+            $data['_caption'] = 'Siswa';
+            $this->load->view('_layout', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('s05_ssw'));
         }
     }
-    
-    public function update_action() 
+
+    public function update_action()
     {
         $this->_rules();
 
@@ -116,17 +124,16 @@ class S05_ssw extends CI_Controller
             $this->update($this->input->post('idsiswa', TRUE));
         } else {
             $data = array(
-		'NIS' => $this->input->post('NIS',TRUE),
-		'Nama' => $this->input->post('Nama',TRUE),
-	    );
-
+            		'NIS' => $this->input->post('NIS',TRUE),
+            		'Nama' => $this->input->post('Nama',TRUE),
+              );
             $this->S05_ssw_model->update($this->input->post('idsiswa', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('s05_ssw'));
         }
     }
-    
-    public function delete($id) 
+
+    public function delete($id)
     {
         $row = $this->S05_ssw_model->get_by_id($id);
 
@@ -140,20 +147,20 @@ class S05_ssw extends CI_Controller
         }
     }
 
-    public function _rules() 
+    public function _rules()
     {
-	$this->form_validation->set_rules('NIS', 'nis', 'trim|required');
-	$this->form_validation->set_rules('Nama', 'nama', 'trim|required');
+      	$this->form_validation->set_rules('NIS', 'nis', 'trim|required');
+      	$this->form_validation->set_rules('Nama', 'nama', 'trim|required');
 
-	$this->form_validation->set_rules('idsiswa', 'idsiswa', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+      	$this->form_validation->set_rules('idsiswa', 'idsiswa', 'trim');
+      	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 
     public function excel()
     {
         $this->load->helper('exportexcel');
-        $namaFile = "s05_ssw.xls";
-        $judul = "s05_ssw";
+        $namaFile = "Siswa.xls";
+        $judul = "Siswa";
         $tablehead = 0;
         $tablebody = 1;
         $nourut = 1;
@@ -171,18 +178,18 @@ class S05_ssw extends CI_Controller
 
         $kolomhead = 0;
         xlsWriteLabel($tablehead, $kolomhead++, "No");
-	xlsWriteLabel($tablehead, $kolomhead++, "NIS");
-	xlsWriteLabel($tablehead, $kolomhead++, "Nama");
+      	xlsWriteLabel($tablehead, $kolomhead++, "NIS");
+      	xlsWriteLabel($tablehead, $kolomhead++, "Nama");
 
-	foreach ($this->S05_ssw_model->get_all() as $data) {
+      	foreach ($this->S05_ssw_model->get_all() as $data) {
             $kolombody = 0;
 
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->NIS);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->Nama);
+      	    xlsWriteLabel($tablebody, $kolombody++, $data->NIS);
+      	    xlsWriteLabel($tablebody, $kolombody++, $data->Nama);
 
-	    $tablebody++;
+      	    $tablebody++;
             $nourut++;
         }
 
@@ -193,13 +200,13 @@ class S05_ssw extends CI_Controller
     public function word()
     {
         header("Content-type: application/vnd.ms-word");
-        header("Content-Disposition: attachment;Filename=s05_ssw.doc");
+        header("Content-Disposition: attachment;Filename=Siswa.doc");
 
         $data = array(
             's05_ssw_data' => $this->S05_ssw_model->get_all(),
             'start' => 0
         );
-        
+
         $this->load->view('s05_ssw/s05_ssw_doc',$data);
     }
 

@@ -1,16 +1,3 @@
-<!doctype html>
-<html>
-    <head>
-        <title>harviacode.com - codeigniter crud generator</title>
-        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>"/>
-        <style>
-            body{
-                padding: 15px;
-            }
-        </style>
-    </head>
-    <body>
-        <h2 style="margin-top:0px">S05_ssw List</h2>
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
                 <?php echo anchor(site_url('s05_ssw/create'),'Create', 'class="btn btn-primary"'); ?>
@@ -27,7 +14,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
                         <span class="input-group-btn">
-                            <?php 
+                            <?php
                                 if ($q <> '')
                                 {
                                     ?>
@@ -56,12 +43,12 @@
 			<td><?php echo $s05_ssw->NIS ?></td>
 			<td><?php echo $s05_ssw->Nama ?></td>
 			<td style="text-align:center" width="200px">
-				<?php 
-				echo anchor(site_url('s05_ssw/read/'.$s05_ssw->idsiswa),'Read'); 
-				echo ' | '; 
-				echo anchor(site_url('s05_ssw/update/'.$s05_ssw->idsiswa),'Update'); 
-				echo ' | '; 
-				echo anchor(site_url('s05_ssw/delete/'.$s05_ssw->idsiswa),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+				<?php
+				echo anchor(site_url('s05_ssw/read/'.$s05_ssw->idsiswa),'Read');
+				echo ' | ';
+				echo anchor(site_url('s05_ssw/update/'.$s05_ssw->idsiswa),'Update');
+				echo ' | ';
+				echo anchor(site_url('s05_ssw/delete/'.$s05_ssw->idsiswa),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
 				?>
 			</td>
 		</tr>
@@ -79,5 +66,3 @@
                 <?php echo $pagination ?>
             </div>
         </div>
-    </body>
-</html>
