@@ -95,6 +95,12 @@
               <p>Sekolah</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('s02_thaj'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 's02_thaj' ? 'active' : ''; ?>">
+              <i class="far fa-calendar-alt nav-icon"></i>
+              <p>Tahun Ajaran</p>
+            </a>
+          </li>
 
         </ul>
       </nav>

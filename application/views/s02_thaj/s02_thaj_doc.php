@@ -16,20 +16,20 @@
         </style>
     </head>
     <body>
-        <h2>Sekolah List</h2>
+        <h2>Tahun Ajaran List</h2>
         <table class="word-table" style="margin-bottom: 10px">
             <tr>
                 <th>No</th>
-            		<th>Kode</th>
-            		<th>Nama</th>
+            		<th>TahunAjaran</th>
+            		<th>SaldoAwal</th>
             </tr><?php
-            foreach ($s01_sklh_data as $s01_sklh)
+            foreach ($s02_thaj_data as $s02_thaj)
             {
                 ?>
                 <tr>
           		      <td><?php echo ++$start ?></td>
-          		      <td><?php echo $s01_sklh->Kode ?></td>
-          		      <td><?php echo $s01_sklh->Nama ?></td>
+          		      <td><?php echo $s02_thaj->TahunAjaran ?></td>
+          		      <td><?php echo $s02_thaj->SaldoAwal ?></td>
                 </tr>
                 <?php
             }
