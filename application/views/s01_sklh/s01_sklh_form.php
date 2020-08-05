@@ -11,7 +11,7 @@
     </head>
     <body>
         <h2 style="margin-top:0px">S01_sklh <?php //echo $button ?></h2> -->
-        <!-- <h2 style="margin-top:0px"><?php echo $_caption . ' ' . $button ?></h2> -->
+        <!-- <h2 style="margin-top:0px"><?php //echo $_caption . ' ' . $button ?></h2> -->
         <form action="<?php echo $action; ?>" method="post">
 	    <div class="form-group">
             <label for="varchar">Kode <?php echo form_error('Kode') ?></label>

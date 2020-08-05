@@ -39,7 +39,7 @@ class S01_sklh extends CI_Controller
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
-        );
+          );
         $data['_view']    = 's01_sklh/s01_sklh_list';
         $data['_caption'] = 'Sekolah';
         $this->load->view('_layout', $data);
@@ -50,11 +50,14 @@ class S01_sklh extends CI_Controller
         $row = $this->S01_sklh_model->get_by_id($id);
         if ($row) {
             $data = array(
-		'idsklh' => $row->idsklh,
-		'Kode' => $row->Kode,
-		'Nama' => $row->Nama,
-	    );
-            $this->load->view('s01_sklh/s01_sklh_read', $data);
+            		'idsklh' => $row->idsklh,
+            		'Kode' => $row->Kode,
+            		'Nama' => $row->Nama,
+              );
+            $data['button']   = 'Read';
+            $data['_view']    = 's01_sklh/s01_sklh_read';
+            $data['_caption'] = 'Sekolah';
+            $this->load->view('_layout', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('s01_sklh'));
@@ -66,12 +69,12 @@ class S01_sklh extends CI_Controller
         $data = array(
             'button' => 'Create',
             'action' => site_url('s01_sklh/create_action'),
-	    'idsklh' => set_value('idsklh'),
-	    'Kode' => set_value('Kode'),
-	    'Nama' => set_value('Nama'),
-	);
+      	    'idsklh' => set_value('idsklh'),
+      	    'Kode' => set_value('Kode'),
+      	    'Nama' => set_value('Nama'),
+          );
         $data['_view']    = 's01_sklh/s01_sklh_form';
-        $data['_caption'] = 'Create';
+        $data['_caption'] = 'Sekolah';
         $this->load->view('_layout', $data);
     }
 
@@ -83,10 +86,9 @@ class S01_sklh extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'Kode' => $this->input->post('Kode',TRUE),
-		'Nama' => $this->input->post('Nama',TRUE),
-	    );
-
+            		'Kode' => $this->input->post('Kode',TRUE),
+            		'Nama' => $this->input->post('Nama',TRUE),
+              );
             $this->S01_sklh_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('s01_sklh'));
@@ -101,11 +103,14 @@ class S01_sklh extends CI_Controller
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('s01_sklh/update_action'),
-		'idsklh' => set_value('idsklh', $row->idsklh),
-		'Kode' => set_value('Kode', $row->Kode),
-		'Nama' => set_value('Nama', $row->Nama),
-	    );
-            $this->load->view('s01_sklh/s01_sklh_form', $data);
+            		'idsklh' => set_value('idsklh', $row->idsklh),
+            		'Kode' => set_value('Kode', $row->Kode),
+            		'Nama' => set_value('Nama', $row->Nama),
+              );
+            // $this->load->view('s01_sklh/s01_sklh_form', $data);
+            $data['_view']    = 's01_sklh/s01_sklh_form';
+            $data['_caption'] = 'Sekolah';
+            $this->load->view('_layout', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('s01_sklh'));
@@ -120,10 +125,9 @@ class S01_sklh extends CI_Controller
             $this->update($this->input->post('idsklh', TRUE));
         } else {
             $data = array(
-		'Kode' => $this->input->post('Kode',TRUE),
-		'Nama' => $this->input->post('Nama',TRUE),
-	    );
-
+            		'Kode' => $this->input->post('Kode',TRUE),
+            		'Nama' => $this->input->post('Nama',TRUE),
+              );
             $this->S01_sklh_model->update($this->input->post('idsklh', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('s01_sklh'));
@@ -146,11 +150,11 @@ class S01_sklh extends CI_Controller
 
     public function _rules()
     {
-	$this->form_validation->set_rules('Kode', 'kode', 'trim|required');
-	$this->form_validation->set_rules('Nama', 'nama', 'trim|required');
+      	$this->form_validation->set_rules('Kode', 'kode', 'trim|required');
+      	$this->form_validation->set_rules('Nama', 'nama', 'trim|required');
 
-	$this->form_validation->set_rules('idsklh', 'idsklh', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+      	$this->form_validation->set_rules('idsklh', 'idsklh', 'trim');
+      	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 
     public function excel()
@@ -175,18 +179,18 @@ class S01_sklh extends CI_Controller
 
         $kolomhead = 0;
         xlsWriteLabel($tablehead, $kolomhead++, "No");
-	xlsWriteLabel($tablehead, $kolomhead++, "Kode");
-	xlsWriteLabel($tablehead, $kolomhead++, "Nama");
+      	xlsWriteLabel($tablehead, $kolomhead++, "Kode");
+      	xlsWriteLabel($tablehead, $kolomhead++, "Nama");
 
-	foreach ($this->S01_sklh_model->get_all() as $data) {
+      	foreach ($this->S01_sklh_model->get_all() as $data) {
             $kolombody = 0;
 
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->Kode);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->Nama);
+      	    xlsWriteLabel($tablebody, $kolombody++, $data->Kode);
+      	    xlsWriteLabel($tablebody, $kolombody++, $data->Nama);
 
-	    $tablebody++;
+      	    $tablebody++;
             $nourut++;
         }
 
