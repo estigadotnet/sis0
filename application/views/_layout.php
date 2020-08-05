@@ -231,7 +231,6 @@
 
 <script>
   $(function () {
-    //Date range picker
     $('.btn').addClass('btn-sm')
     $('.table').addClass('table-sm')
     $('.form-control').addClass('form-control-sm')
