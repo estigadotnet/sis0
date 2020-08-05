@@ -107,6 +107,12 @@
               <p>Kelas</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('s04_guru'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 's04_guru' ? 'active' : ''; ?>">
+              <i class="fas fa-chalkboard-teacher nav-icon"></i>
+              <p>Guru</p>
+            </a>
+          </li>
 
         </ul>
       </nav>
