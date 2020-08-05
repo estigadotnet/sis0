@@ -113,6 +113,12 @@
               <p>Guru</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('s05_ssw'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 's05_ssw' ? 'active' : ''; ?>">
+              <i class="fas fa-users nav-icon"></i>
+              <p>Siswa</p>
+            </a>
+          </li>
 
         </ul>
       </nav>
