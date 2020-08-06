@@ -26,7 +26,7 @@ class S05_ssw extends CI_Controller
             $config['first_url'] = base_url() . 's05_ssw/index.html';
         }
 
-        $config['per_page'] = 10;
+        $config['per_page'] = 10000000;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->S05_ssw_model->total_rows($q);
         $s05_ssw = $this->S05_ssw_model->get_limit_data($config['per_page'], $start, $q);

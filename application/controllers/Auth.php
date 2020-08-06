@@ -91,6 +91,14 @@ class Auth extends CI_Controller
 				//if the login is successful
 				//redirect them back to the home page
 
+				// kosongkan session user_name
+				$this->session->set_userdata('user_name', '');
+
+	      // simpan session user_name
+				$this->load->model('Users_model');
+				$users = $this->Users_model->get_by_id($this->session->userdata('user_id'));
+	      $this->session->set_userdata('user_name', $users->first_name);
+				
 				// simpan session data tahun ajaran
 				$this->load->model('S01_thaj_model');
 				$s01_thaj = $this->S01_thaj_model->get_by_id($this->input->post('idthaj'));

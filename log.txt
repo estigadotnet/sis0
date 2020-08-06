@@ -6,5 +6,5 @@
 	4:38 PM 8/6/2020
 	- skenario,
 	- to-do,
-		- auto nis baru
+		- auto nis baru => done
 		- isi dashboard

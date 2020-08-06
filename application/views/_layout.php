@@ -72,10 +72,10 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-              <img src="<?php echo base_url(); ?>assets/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+              <!-- <img src="<?php //echo base_url(); ?>assets/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
             </div>
             <div class="info">
-              <a href="#" class="d-block"><?php echo $username; ?></a>
+              <a href="#" class="d-block"><?php echo $this->session->userdata('user_name'); ?></a>
             </div>
           </div>
 
@@ -126,14 +126,32 @@
                 </a>
               </li>
 
-              <!-- setting -->
-              <li class="nav-header">SETTING</li>
+              <!-- daftar -->
+              <li class="nav-header">DAFTAR</li>
               <li class="nav-item">
-                <a href="<?php echo site_url('users'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 'users' ? 'active' : ''; ?>">
+                <a href="<?php echo site_url('d01_kls'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 'd01_kls' ? 'active' : ''; ?>">
+                  <i class="fas fa-table nav-icon"></i>
+                  <p>Kelas</p>
+                </a>
+              </li>
+
+              <!-- demo grocerycrud -->
+              <li class="nav-header">DEMO</li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('examples'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 'examples' ? 'active' : ''; ?>">
+                  <i class="fas fa-user nav-icon"></i>
+                  <p>GroceryCRUD</p>
+                </a>
+              </li>
+
+              <!-- setting -->
+              <!-- <li class="nav-header">SETTING</li> -->
+              <!-- <li class="nav-item">
+                <a href="<?php //echo site_url('users'); ?>" class="nav-link <?php //echo $this->uri->segment(1) == 'users' ? 'active' : ''; ?>">
                   <i class="fas fa-user nav-icon"></i>
                   <p>Users</p>
                 </a>
-              </li>
+              </li> -->
 
               <!-- divider -->
               <li class="nav-header"></li>
@@ -184,7 +202,7 @@
                     else {
                     ?>
                       <li class="breadcrumb-item"><a href="<?php echo $this->uri->segment(1); ?>"><?php echo $_caption; ?></a></li>
-                      <li class="breadcrumb-item active"><?php echo $button; ?></li>
+                      <li class="breadcrumb-item active"><?php echo isset($button) ? $button : ''; ?></li>
                     <?php
                     }
                   } ?>
