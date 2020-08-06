@@ -1,7 +1,7 @@
   <form action="<?php echo $action; ?>" method="post">
 	    <div class="form-group">
             <label for="varchar">NIS <?php echo form_error('NIS') ?></label>
-            <input type="text" class="form-control" name="NIS" id="NIS" placeholder="NIS" value="<?php echo $NIS; ?>" />
+            <input type="text" class="form-control" name="NIS" id="NIS" placeholder="NIS" value="<?php echo $NIS; ?>" readonly />
         </div>
 	    <div class="form-group">
             <label for="varchar">Nama <?php echo form_error('Nama') ?></label>

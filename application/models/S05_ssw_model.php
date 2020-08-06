@@ -28,7 +28,7 @@ class S05_ssw_model extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-    
+
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('idssw', $q);
@@ -66,6 +66,28 @@ class S05_ssw_model extends CI_Model
     {
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
+    }
+
+    // buat NIS baru
+    function get_new_NIS() {
+      // cari nis terakhir
+      //$kodeSekolah = $this->session->userdata("kodesekolah");
+      $q = "select NIS from s05_ssw where left(NIS, 2) = '".$this->session->userdata('kode_sklh')."' order by NIS desc"; //echo $s;
+      $r = $this->db->query($q);
+      $count = $r->num_rows();
+      if ($count > 0) {
+        // sudah ada data
+        $row = $r->row();
+        $last_NIS = $row->NIS;
+        $last_no_urut = substr($last_NIS, 4, 4);
+        $next_no_urut = $last_no_urut + 1;
+        $next_NIS = $this->session->userdata('kode_sklh') . substr($this->session->userdata('tahun_ajaran'), 2, 2) . sprintf('%04s', $next_no_urut);
+      }
+      else {
+        // belum ada data
+        $next_NIS = $this->session->userdata('kode_sklh') . substr($this->session->userdata('tahun_ajaran'), 2, 2) . '0001';
+      }
+      return $next_NIS;
     }
 
 }

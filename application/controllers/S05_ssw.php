@@ -10,6 +10,7 @@ class S05_ssw extends CI_Controller
         parent::__construct();
         $this->load->model('S05_ssw_model');
         $this->load->library('form_validation');
+        if (!$this->ion_auth->logged_in()) redirect('auth/login', 'refresh');
     }
 
     public function index()
@@ -70,7 +71,7 @@ class S05_ssw extends CI_Controller
             'button' => 'Create',
             'action' => site_url('s05_ssw/create_action'),
       	    'idssw' => set_value('idssw'),
-      	    'NIS' => set_value('NIS'),
+      	    'NIS' => set_value('NIS', $this->S05_ssw_model->get_new_NIS()),
       	    'Nama' => set_value('Nama'),
           );
         $data['_view']    = 's05_ssw/s05_ssw_form';

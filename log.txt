@@ -1,0 +1,10 @@
+
+	legend variabel
+	- $q = "select * ..."
+	- $r = $this->db->query($q);
+
+	4:38 PM 8/6/2020
+	- skenario,
+	- to-do,
+		- auto nis baru
+		- isi dashboard
