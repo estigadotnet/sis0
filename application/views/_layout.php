@@ -75,7 +75,7 @@
               <img src="<?php echo base_url(); ?>assets/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-              <a href="#" class="d-block">Alexander Pierce</a>
+              <a href="#" class="d-block"><?php echo $username; ?></a>
             </div>
           </div>
 
@@ -126,6 +126,15 @@
                 </a>
               </li>
 
+              <!-- setting -->
+              <li class="nav-header">SETTING</li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('users'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 'users' ? 'active' : ''; ?>">
+                  <i class="fas fa-user nav-icon"></i>
+                  <p>Users</p>
+                </a>
+              </li>
+
               <!-- divider -->
               <li class="nav-header"></li>
               <!-- Login or logout -->
@@ -136,10 +145,10 @@
                   <p>Logout</p>
                 </a>
                 <?php } else { ?>
-                  <a href="<?php echo site_url('auth/login'); ?>" class="nav-link">
-                    <i class="fas fa-sign-in-alt nav-icon"></i>
-                    <p>Login</p>
-                  </a>
+                <a href="<?php echo site_url('auth/login'); ?>" class="nav-link">
+                  <i class="fas fa-sign-in-alt nav-icon"></i>
+                  <p>Login</p>
+                </a>
                 <?php }?>
               </li>
 
