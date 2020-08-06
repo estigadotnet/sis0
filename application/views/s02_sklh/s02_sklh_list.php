@@ -42,13 +42,17 @@
 			<td width="80px"><?php echo ++$start ?></td>
 			<td><?php echo $s02_sklh->Kode ?></td>
 			<td><?php echo $s02_sklh->Nama ?></td>
-			<td style="text-align:center" width="200px">
+			<td style="text-align:left" width="200px">
 				<?php
 				echo anchor(site_url('s02_sklh/read/'.$s02_sklh->idsklh),'Read');
 				echo ' | ';
 				echo anchor(site_url('s02_sklh/update/'.$s02_sklh->idsklh),'Update');
 				echo ' | ';
 				echo anchor(site_url('s02_sklh/delete/'.$s02_sklh->idsklh),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+        if ($this->session->userdata('idsklh') != $s02_sklh->idsklh) {
+        echo ' | ';
+				echo anchor(site_url('s02_sklh/set_aktif/'.$s02_sklh->idsklh),'Aktifkan');
+        }
 				?>
 			</td>
 		</tr>

@@ -210,6 +210,16 @@ class S01_thaj extends CI_Controller
         $this->load->view('s01_thaj/s01_thaj_doc',$data);
     }
 
+    // aktifkan tahun ajaran sesuai pilihan user
+    public function set_aktif($idthaj) {
+      // simpan session data tahun ajaran
+      $s01_thaj = $this->S01_thaj_model->get_by_id($idthaj);
+      $this->session->set_userdata('idthaj', $idthaj);
+      $this->session->set_userdata('tahun_ajaran', $s01_thaj->TahunAjaran);
+      $this->session->set_userdata('saldo_awal', $s01_thaj->SaldoAwal);
+      redirect('/');
+    }
+
 }
 
 /* End of file S01_thaj.php */

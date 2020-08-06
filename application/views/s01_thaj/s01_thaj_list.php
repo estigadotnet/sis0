@@ -42,13 +42,17 @@
 			<td width="80px"><?php echo ++$start ?></td>
 			<td><?php echo $s01_thaj->TahunAjaran ?></td>
 			<td><?php echo $s01_thaj->SaldoAwal ?></td>
-			<td style="text-align:center" width="200px">
+			<td style="text-align:left" width="200px">
 				<?php
 				echo anchor(site_url('s01_thaj/read/'.$s01_thaj->idthaj),'Read');
 				echo ' | ';
 				echo anchor(site_url('s01_thaj/update/'.$s01_thaj->idthaj),'Update');
 				echo ' | ';
 				echo anchor(site_url('s01_thaj/delete/'.$s01_thaj->idthaj),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+        if ($this->session->userdata('idthaj') != $s01_thaj->idthaj) {
+        echo ' | ';
+				echo anchor(site_url('s01_thaj/set_aktif/'.$s01_thaj->idthaj),'Aktifkan');
+        }
 				?>
 			</td>
 		</tr>

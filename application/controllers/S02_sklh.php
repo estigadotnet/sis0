@@ -210,6 +210,16 @@ class S02_sklh extends CI_Controller
         $this->load->view('s02_sklh/s02_sklh_doc',$data);
     }
 
+    // aktifkan sekolah sesuai pilihan user
+    public function set_aktif($idsklh) {
+      // simpan session data sekolah
+      $s02_sklh = $this->S02_sklh_model->get_by_id($idsklh);
+      $this->session->set_userdata('idsklh', $idsklh);
+      $this->session->set_userdata('kode_sklh', $s02_sklh->Kode);
+      $this->session->set_userdata('nama_sklh', $s02_sklh->Nama);
+      redirect('/');
+    }
+
 }
 
 /* End of file S02_sklh.php */

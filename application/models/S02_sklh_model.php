@@ -8,7 +8,8 @@ class S02_sklh_model extends CI_Model
 
     public $table = 's02_sklh';
     public $id = 'idsklh';
-    public $order = 'DESC';
+    public $order = 'ASC';
+    public $field_order_by = 'Kode';
 
     function __construct()
     {
@@ -18,7 +19,8 @@ class S02_sklh_model extends CI_Model
     // get all
     function get_all()
     {
-        $this->db->order_by($this->id, $this->order);
+        // $this->db->order_by($this->id, $this->order);
+        $this->db->order_by($this->field_order_by, $this->order);
         return $this->db->get($this->table)->result();
     }
 
@@ -28,7 +30,7 @@ class S02_sklh_model extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-    
+
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('idsklh', $q);
@@ -40,7 +42,8 @@ class S02_sklh_model extends CI_Model
 
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL) {
-        $this->db->order_by($this->id, $this->order);
+        // $this->db->order_by($this->id, $this->order);
+        $this->db->order_by($this->field_order_by, $this->order);
         $this->db->like('idsklh', $q);
 	$this->db->or_like('Kode', $q);
 	$this->db->or_like('Nama', $q);

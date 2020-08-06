@@ -91,14 +91,14 @@ class Auth extends CI_Controller
 				//if the login is successful
 				//redirect them back to the home page
 
-				// simpan session idthaj
+				// simpan session data tahun ajaran
 				$this->load->model('S01_thaj_model');
 				$s01_thaj = $this->S01_thaj_model->get_by_id($this->input->post('idthaj'));
 				$this->session->set_userdata('idthaj', $this->input->post('idthaj'));
 				$this->session->set_userdata('tahun_ajaran', $s01_thaj->TahunAjaran);
 				$this->session->set_userdata('saldo_awal', $s01_thaj->SaldoAwal);
 
-				// simpan session idsklh
+				// simpan session data sekolah
 				$this->load->model('S02_sklh_model');
 				$s02_sklh = $this->S02_sklh_model->get_by_id($this->input->post('idsklh'));
 				$this->session->set_userdata('idsklh', $this->input->post('idsklh'));
