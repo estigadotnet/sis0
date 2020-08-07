@@ -28,6 +28,13 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <?php
+    if (isset($css_files)){
+    foreach($css_files as $file): ?>
+    	<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
+    <?php endforeach; }?>
+
   </head>
   <!-- sidebase-collapse -->
   <!-- <body class="hold-transition sidebar-collapse sidebar-mini layout-fixed text-sm"> -->
@@ -218,8 +225,19 @@
           <div class="container-fluid">
 
             <?php
-            if(isset($_view) && $_view)
-                $this->load->view($_view);
+            if (!isset($output)) {
+              if(isset($_view) && $_view)
+                  $this->load->view($_view);
+            }
+            else {
+            ?>
+              <?php echo isset($_examples) ? $_examples : ''; ?>
+              <div style='height: 20px;'></div>
+              <div style="padding: 10px">
+                <?php echo $output; ?>
+              </div>
+            <?php
+            }
             ?>
 
           </div>
@@ -286,6 +304,12 @@
         $('.form-control').addClass('form-control-sm')
       })
     </script>
+
+    <?php
+    if (isset($js_files)){
+    foreach($js_files as $file): ?>
+    		<script src="<?php echo $file; ?>"></script>
+    <?php endforeach; }?>
 
   </body>
 </html>

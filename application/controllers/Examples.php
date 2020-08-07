@@ -14,13 +14,19 @@ class Examples extends CI_Controller {
 
 	public function _example_output($output = null)
 	{
-		// $this->load->view('example.php',(array)$output);
-		// $data['_view']    = 's05_ssw/s05_ssw_list';
-		// $data['_caption'] = 'Siswa';
-		// $this->load->view('_layout', $data);
-		$output->_view    = 'example.php';
-		$output->_caption = 'GroceryCRUD';
-		$this->load->view('_layout', (array)$output);
+		$output->_examples = "
+		<div>
+			<a href='".site_url("examples/customers_management")."'>Customers</a> |
+			<a href='".site_url("examples/orders_management")."'>Orders</a> |
+			<a href='".site_url("examples/products_management")."'>Products</a> |
+			<a href='".site_url("examples/offices_management")."'>Offices</a> |
+			<a href='".site_url("examples/employees_management")."'>Employees</a> |
+			<a href='".site_url("examples/film_management")."'>Films</a> |
+			<a href='".site_url("examples/multigrids")."'>Multigrid [BETA]</a>
+		</div>
+		";
+		$output->_caption = 'GroceryCRUD Examples';
+		$this->load->view('_layout',(array)$output);
 	}
 
 	public function offices()
@@ -129,8 +135,6 @@ class Examples extends CI_Controller {
 	public function film_management()
 	{
 		$crud = new grocery_CRUD();
-
-		$crud->set_theme('datatables');
 
 		$crud->set_table('film');
 		$crud->set_relation_n_n('actors', 'film_actor', 'actor', 'film_id', 'actor_id', 'fullname','priority');

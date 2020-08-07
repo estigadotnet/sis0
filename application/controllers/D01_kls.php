@@ -14,7 +14,7 @@ class D01_kls extends CI_Controller
         if (!$this->ion_auth->logged_in()) redirect('auth/login', 'refresh');
     }
 
-    public function index()
+    public function index0()
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
@@ -221,12 +221,13 @@ class D01_kls extends CI_Controller
     }
 
     public function _example_output($output = null) {
-      $output->_view    = 'd01_kls/d01_kls_form2';
+      //$output->_view    = 'd01_kls/d01_kls_form2';
   		$output->_caption = 'Daftar Kelas';
   		$this->load->view('_layout', (array)$output);
     }
 
-    public function create2() {
+    // public function create2() {
+    public function index() {
       $crud = new grocery_CRUD();
       $crud->set_theme('datatables');
       $crud->set_table('d01_kls');
