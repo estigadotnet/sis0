@@ -128,7 +128,7 @@
               </li>
               <li class="nav-item">
                 <a href="<?php echo site_url('s05_ssw'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 's05_ssw' ? 'active' : ''; ?>">
-                  <i class="fas fa-users nav-icon"></i>
+                  <i class="fas fa-user-alt nav-icon"></i>
                   <p>Siswa</p>
                 </a>
               </li>
@@ -141,15 +141,21 @@
                   <p>Kelas</p>
                 </a>
               </li>
+              <!-- <li class="nav-item">
+                <a href="<?php //echo site_url('d02_ssw'); ?>" class="nav-link <?php //echo $this->uri->segment(1) == 'd02_ssw' ? 'active' : ''; ?>">
+                  <i class="fas fa-users nav-icon"></i>
+                  <p>Siswa</p>
+                </a>
+              </li> -->
 
               <!-- demo grocerycrud -->
-              <li class="nav-header">DEMO</li>
-              <li class="nav-item">
-                <a href="<?php echo site_url('examples'); ?>" class="nav-link <?php echo $this->uri->segment(1) == 'examples' ? 'active' : ''; ?>">
+              <!-- <li class="nav-header">DEMO</li> -->
+              <!-- <li class="nav-item">
+                <a href="<?php //echo site_url('examples'); ?>" class="nav-link <?php //echo $this->uri->segment(1) == 'examples' ? 'active' : ''; ?>">
                   <i class="fas fa-user nav-icon"></i>
                   <p>GroceryCRUD</p>
                 </a>
-              </li>
+              </li> -->
 
               <!-- setting -->
               <!-- <li class="nav-header">SETTING</li> -->

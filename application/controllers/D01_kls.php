@@ -229,11 +229,12 @@ class D01_kls extends CI_Controller
     // public function create2() {
     public function index() {
       $crud = new grocery_CRUD();
-      $crud->set_theme('datatables');
+      // $crud->set_theme('datatables');
       $crud->set_table('d01_kls');
       $crud->set_relation('idthaj', 's01_thaj', 'TahunAjaran');
       $crud->set_relation('idsklh', 's02_sklh', 'Nama');
       $crud->set_relation('idkls', 's03_kls', 'Nama');
+      $crud->set_relation_n_n('siswa', 'd02_ssw', 's05_ssw', 'iddkls', 'idssw', 'Nama');
       $crud->display_as('idthaj', 'Tahun Ajaran');
       $crud->display_as('idsklh', 'Sekolah');
       $crud->display_as('idkls', 'Kelas');
