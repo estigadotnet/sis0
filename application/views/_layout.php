@@ -196,6 +196,12 @@
         <div class="content-header">
           <div class="container-fluid">
             <div class="row mb-2">
+            <?php
+            echo $this->db->database;
+            echo pre($this->db);
+            ?>
+          </div>
+            <div class="row mb-2">
               <div class="col-sm-6">
                 <!-- <h1 class="m-0 text-dark">Dashboard</h1> -->
                 <h1 class="m-0 text-dark"><?php echo $_caption; ?></h1>

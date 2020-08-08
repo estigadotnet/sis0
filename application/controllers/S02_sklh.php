@@ -218,6 +218,14 @@ class S02_sklh extends CI_Controller
       $this->session->set_userdata('idsklh', $idsklh);
       $this->session->set_userdata('kode_sklh', $s02_sklh->Kode);
       $this->session->set_userdata('nama_sklh', $s02_sklh->Nama);
+
+      // echo $db['default']['database'];
+      // $this->load->database($db['default']);
+      $this->load->database('02', true); https://stackoverflow.com/questions/25457241/switch-dynamic-database-from-other-db-in-codeigniter
+
+      // $configdbfly = $this->config->config['sysdb'];
+      // $configdbfly['database']= $s02_sklh->Kode == '02' ? 'db_sis_unggulan' : 'db_sis_karakter'; /*cambiamos de db*/
+      // $this->load->database($configdbfly);
       redirect('/');
     }
 

@@ -73,24 +73,146 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'db_sis',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
+//$active_group = 'default';
+
+// $db['default']['hostname'] = 'localhost';
+// $db['default']['username'] = 'root';
+// $db['default']['password'] = '';
+// $db['default']['database'] = 'db_sis';
+
+$db['default']['dsn']	= '';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'db_sis';
+$db['default']['dbdriver'] = 'mysqli';
+$db['default']['dbprefix'] = '';
+$db['default']['pconnect'] = FALSE;
+$db['default']['db_debug'] = (ENVIRONMENT !== 'production');
+$db['default']['cache_on'] = FALSE;
+$db['default']['cachedir'] = '';
+$db['default']['char_set'] = 'utf8';
+$db['default']['dbcollat'] = 'utf8_general_ci';
+$db['default']['swap_pre'] = '';
+$db['default']['encrypt'] = FALSE;
+$db['default']['compress'] = FALSE;
+$db['default']['stricton'] = FALSE;
+$db['default']['failover'] = array();
+$db['default']['save_queries'] = TRUE;
+
+$db['01']['dsn']	= '';
+$db['01']['hostname'] = 'localhost';
+$db['01']['username'] = 'root';
+$db['01']['password'] = '';
+$db['01']['database'] = 'db_sis_unggulan';
+$db['01']['dbdriver'] = 'mysqli';
+$db['01']['dbprefix'] = '';
+$db['01']['pconnect'] = FALSE;
+$db['01']['db_debug'] = (ENVIRONMENT !== 'production');
+$db['01']['cache_on'] = FALSE;
+$db['01']['cachedir'] = '';
+$db['01']['char_set'] = 'utf8';
+$db['01']['dbcollat'] = 'utf8_general_ci';
+$db['01']['swap_pre'] = '';
+$db['01']['encrypt'] = FALSE;
+$db['01']['compress'] = FALSE;
+$db['01']['stricton'] = FALSE;
+$db['01']['failover'] = array();
+$db['01']['save_queries'] = TRUE;
+
+$db['02']['dsn']	= '';
+$db['02']['hostname'] = 'localhost';
+$db['02']['username'] = 'root';
+$db['02']['password'] = '';
+$db['02']['database'] = 'db_sis_karakter';
+$db['02']['dbdriver'] = 'mysqli';
+$db['02']['dbprefix'] = '';
+$db['02']['pconnect'] = FALSE;
+$db['02']['db_debug'] = (ENVIRONMENT !== 'production');
+$db['02']['cache_on'] = FALSE;
+$db['02']['cachedir'] = '';
+$db['02']['char_set'] = 'utf8';
+$db['02']['dbcollat'] = 'utf8_general_ci';
+$db['02']['swap_pre'] = '';
+$db['02']['encrypt'] = FALSE;
+$db['02']['compress'] = FALSE;
+$db['02']['stricton'] = FALSE;
+$db['02']['failover'] = array();
+$db['02']['save_queries'] = TRUE;
+
+//Another database connection.
+// $db['01']['hostname'] = 'localhost';
+// $db['01']['username'] = 'root';
+// $db['01']['password'] = '';
+// $db['01']['database'] = 'db_sis_unggulan';
+//
+// $db['02']['hostname'] = 'localhost';
+// $db['02']['username'] = 'root';
+// $db['02']['password'] = '';
+// $db['02']['database'] = 'db_sis_karakter';
+
+// $db['default'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => 'localhost',
+// 	'username' => 'root',
+// 	'password' => '',
+// 	'database' => 'db_sis',
+// 	'dbdriver' => 'mysqli',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );
+//
+// $db['01'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => 'localhost',
+// 	'username' => 'root',
+// 	'password' => '',
+// 	'database' => 'db_sis_unggulan',
+// 	'dbdriver' => 'mysqli',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );
+//
+// $db['02'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => 'localhost',
+// 	'username' => 'root',
+// 	'password' => '',
+// 	'database' => 'db_sis_karakter',
+// 	'dbdriver' => 'mysqli',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );
