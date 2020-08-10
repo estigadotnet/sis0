@@ -10,7 +10,6 @@ class S02_sklh extends CI_Controller
         parent::__construct();
         $this->load->model('S02_sklh_model');
         $this->load->library('form_validation');
-        if (!$this->ion_auth->logged_in()) redirect('auth/login', 'refresh');
     }
 
     public function index()
@@ -54,6 +53,7 @@ class S02_sklh extends CI_Controller
             		'idsklh' => $row->idsklh,
             		'Kode' => $row->Kode,
             		'Nama' => $row->Nama,
+            		'Db' => $row->Db,
               );
             $data['button']   = 'Read';
             $data['_view']    = 's02_sklh/s02_sklh_read';
@@ -73,6 +73,7 @@ class S02_sklh extends CI_Controller
       	    'idsklh' => set_value('idsklh'),
       	    'Kode' => set_value('Kode'),
       	    'Nama' => set_value('Nama'),
+      	    'Db' => set_value('Db'),
           );
         $data['_view']    = 's02_sklh/s02_sklh_form';
         $data['_caption'] = 'Sekolah';
@@ -87,8 +88,9 @@ class S02_sklh extends CI_Controller
             $this->create();
         } else {
             $data = array(
-              	'Kode' => $this->input->post('Kode',TRUE),
-              	'Nama' => $this->input->post('Nama',TRUE),
+            		'Kode' => $this->input->post('Kode',TRUE),
+            		'Nama' => $this->input->post('Nama',TRUE),
+            		'Db' => $this->input->post('Db',TRUE),
               );
             $this->S02_sklh_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -107,6 +109,7 @@ class S02_sklh extends CI_Controller
             		'idsklh' => set_value('idsklh', $row->idsklh),
             		'Kode' => set_value('Kode', $row->Kode),
             		'Nama' => set_value('Nama', $row->Nama),
+            		'Db' => set_value('Db', $row->Db),
               );
             $data['_view']    = 's02_sklh/s02_sklh_form';
             $data['_caption'] = 'Sekolah';
@@ -127,6 +130,7 @@ class S02_sklh extends CI_Controller
             $data = array(
             		'Kode' => $this->input->post('Kode',TRUE),
             		'Nama' => $this->input->post('Nama',TRUE),
+            		'Db' => $this->input->post('Db',TRUE),
               );
             $this->S02_sklh_model->update($this->input->post('idsklh', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
@@ -152,6 +156,7 @@ class S02_sklh extends CI_Controller
     {
       	$this->form_validation->set_rules('Kode', 'kode', 'trim|required');
       	$this->form_validation->set_rules('Nama', 'nama', 'trim|required');
+      	$this->form_validation->set_rules('Db', 'db', 'trim|required');
 
       	$this->form_validation->set_rules('idsklh', 'idsklh', 'trim');
       	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -160,8 +165,8 @@ class S02_sklh extends CI_Controller
     public function excel()
     {
         $this->load->helper('exportexcel');
-        $namaFile = "Sekolah.xls";
-        $judul = "Sekolah";
+        $namaFile = "s02_sklh.xls";
+        $judul = "s02_sklh";
         $tablehead = 0;
         $tablebody = 1;
         $nourut = 1;
@@ -181,6 +186,7 @@ class S02_sklh extends CI_Controller
         xlsWriteLabel($tablehead, $kolomhead++, "No");
       	xlsWriteLabel($tablehead, $kolomhead++, "Kode");
       	xlsWriteLabel($tablehead, $kolomhead++, "Nama");
+      	xlsWriteLabel($tablehead, $kolomhead++, "Db");
 
       	foreach ($this->S02_sklh_model->get_all() as $data) {
             $kolombody = 0;
@@ -189,6 +195,7 @@ class S02_sklh extends CI_Controller
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
       	    xlsWriteLabel($tablebody, $kolombody++, $data->Kode);
       	    xlsWriteLabel($tablebody, $kolombody++, $data->Nama);
+      	    xlsWriteLabel($tablebody, $kolombody++, $data->Db);
 
       	    $tablebody++;
             $nourut++;
@@ -201,7 +208,7 @@ class S02_sklh extends CI_Controller
     public function word()
     {
         header("Content-type: application/vnd.ms-word");
-        header("Content-Disposition: attachment;Filename=Sekolah.doc");
+        header("Content-Disposition: attachment;Filename=s02_sklh.doc");
 
         $data = array(
             's02_sklh_data' => $this->S02_sklh_model->get_all(),
@@ -218,30 +225,27 @@ class S02_sklh extends CI_Controller
       $this->session->set_userdata('idsklh', $idsklh);
       $this->session->set_userdata('kode_sklh', $s02_sklh->Kode);
       $this->session->set_userdata('nama_sklh', $s02_sklh->Nama);
-      $this->session->set_userdata('db_aktif', $s02_sklh->Database);
+      $this->session->set_userdata('db_aktif', $s02_sklh->Db);
 
-      //$this->session->set_userdata('db_aktif', $s02_sklh->Kode == '01' ? 'db_sis_unggulan' : 'db_sis_karakter');
       $db['dsn']	= '';
-  		$db['hostname'] = 'localhost';
-  		$db['username'] = 'root';
-  		$db['password'] = '';
-  		$db['database'] = $this->session->userdata('db_aktif');
-  		$db['dbdriver'] = 'mysqli';
-  		$db['dbprefix'] = '';
-  		$db['pconnect'] = FALSE;
-  		$db['db_debug'] = (ENVIRONMENT !== 'production');
-  		$db['cache_on'] = FALSE;
-  		$db['cachedir'] = '';
-  		$db['char_set'] = 'utf8';
-  		$db['dbcollat'] = 'utf8_general_ci';
-  		$db['swap_pre'] = '';
-  		$db['encrypt'] = FALSE;
-  		$db['compress'] = FALSE;
-  		$db['stricton'] = FALSE;
-  		$db['failover'] = array();
-  		$db['save_queries'] = TRUE;
-      //$CI =& get_instance();
-      //$CI->db = $this->load->database($db, true);
+      $db['hostname'] = 'localhost';
+      $db['username'] = 'root';
+      $db['password'] = '';
+      $db['database'] = $this->session->userdata('db_aktif');
+      $db['dbdriver'] = 'mysqli';
+      $db['dbprefix'] = '';
+      $db['pconnect'] = FALSE;
+      $db['db_debug'] = (ENVIRONMENT !== 'production');
+      $db['cache_on'] = FALSE;
+      $db['cachedir'] = '';
+      $db['char_set'] = 'utf8';
+      $db['dbcollat'] = 'utf8_general_ci';
+      $db['swap_pre'] = '';
+      $db['encrypt'] = FALSE;
+      $db['compress'] = FALSE;
+      $db['stricton'] = FALSE;
+      $db['failover'] = array();
+      $db['save_queries'] = TRUE;
       $this->db = $this->load->database($db, true);
 
       redirect('/');
@@ -252,5 +256,5 @@ class S02_sklh extends CI_Controller
 /* End of file S02_sklh.php */
 /* Location: ./application/controllers/S02_sklh.php */
 /* Please DO NOT modify this information : */
-/* Generated by Harviacode Codeigniter CRUD Generator 2020-08-05 09:21:40 */
+/* Generated by Harviacode Codeigniter CRUD Generator 2020-08-10 13:20:59 */
 /* http://harviacode.com */

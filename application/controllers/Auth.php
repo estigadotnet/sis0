@@ -112,10 +112,9 @@ class Auth extends CI_Controller
 				$this->session->set_userdata('idsklh', $this->input->post('idsklh'));
 				$this->session->set_userdata('kode_sklh', $s02_sklh->Kode);
 				$this->session->set_userdata('nama_sklh', $s02_sklh->Nama);
-				$this->session->set_userdata('db_aktif', $s02_sklh->Database);
+				$this->session->set_userdata('db_aktif', $s02_sklh->Db);
 
-				// simpan session database aktif
-				//$this->session->set_userdata('db_aktif', $s02_sklh->Kode == '01' ? 'db_sis_unggulan' : 'db_sis_karakter');
+				// pindah database sesuai pilihan user saat login
 				$db['dsn']	= '';
 	  		$db['hostname'] = 'localhost';
 	  		$db['username'] = 'root';
@@ -135,8 +134,6 @@ class Auth extends CI_Controller
 	  		$db['stricton'] = FALSE;
 	  		$db['failover'] = array();
 	  		$db['save_queries'] = TRUE;
-	      //$CI =& get_instance();
-				//$CI->db = $this->load->database($db, true);
 				$this->db = $this->load->database($db, true);
 
 				$this->session->set_flashdata('message', $this->ion_auth->messages());

@@ -31,9 +31,10 @@
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
                 <th>No</th>
-		<th>Kode</th>
-		<th>Nama</th>
-		<th>Action</th>
+            		<th>Kode</th>
+            		<th>Nama</th>
+            		<th>Db</th>
+            		<th>Action</th>
             </tr><?php
             foreach ($s02_sklh_data as $s02_sklh)
             {
@@ -42,6 +43,7 @@
 			<td width="80px"><?php echo ++$start ?></td>
 			<td><?php echo $s02_sklh->Kode ?></td>
 			<td><?php echo $s02_sklh->Nama ?></td>
+			<td><?php echo $s02_sklh->Db ?></td>
 			<td style="text-align:left" width="200px">
 				<?php
 				echo anchor(site_url('s02_sklh/read/'.$s02_sklh->idsklh),'Read');

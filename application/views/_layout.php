@@ -196,11 +196,13 @@
         <div class="content-header">
           <div class="container-fluid">
             <div class="row mb-2">
+
             <?php
-            echo $this->db->database;
+            // echo pre($this->db);
             //echo $_SESSION['clientdb'];
             // echo pre($this->session->userdata);
             ?>
+
           </div>
             <div class="row mb-2">
               <div class="col-sm-6">

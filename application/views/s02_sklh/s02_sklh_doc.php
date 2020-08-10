@@ -22,6 +22,7 @@
                 <th>No</th>
             		<th>Kode</th>
             		<th>Nama</th>
+            		<th>Db</th>
             </tr><?php
             foreach ($s02_sklh_data as $s02_sklh)
             {
@@ -30,6 +31,7 @@
           		      <td><?php echo ++$start ?></td>
           		      <td><?php echo $s02_sklh->Kode ?></td>
           		      <td><?php echo $s02_sklh->Nama ?></td>
+          		      <td><?php echo $s02_sklh->Db ?></td>
                 </tr>
                 <?php
             }
