@@ -220,15 +220,15 @@ class Ion_auth_model extends CI_Model
 		$db['compress'] = FALSE;
 		$db['stricton'] = FALSE;
 		$db['failover'] = array();
-		$db['save_queries'] = TRUE;
+		$db['save_queries'] = TRUE; //exit;
 
 		// initialize the database
 		$group_name = $this->config->item('database_group_name', 'ion_auth');
 		if (empty($group_name))
 		{
+			set_db_aktif($this->session->has_userdata('db_aktif') ? $this->session->userdata('db_aktif') : 'db_sis');
 			// By default, use CI's db that should be already loaded
 			$CI =& get_instance();
-			$CI->db = $this->load->database($db, true);
 			$this->db = $CI->db;
 		}
 		else

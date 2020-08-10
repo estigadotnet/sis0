@@ -14,6 +14,7 @@ class S02_sklh_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        set_db_aktif('db_sis');
     }
 
     // get all

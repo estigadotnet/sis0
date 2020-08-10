@@ -27,7 +27,7 @@ class D01_kls extends CI_Controller
             $config['first_url'] = base_url() . 'd01_kls/index.html';
         }
 
-        $config['per_page'] = 10;
+        $config['per_page'] = 10000000;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->D01_kls_model->total_rows($q);
         $d01_kls = $this->D01_kls_model->get_limit_data($config['per_page'], $start, $q);
@@ -231,8 +231,8 @@ class D01_kls extends CI_Controller
       $crud = new grocery_CRUD();
       // $crud->set_theme('datatables');
       $crud->set_table('d01_kls');
-      $crud->set_relation('idthaj', 's01_thaj', 'TahunAjaran');
-      $crud->set_relation('idsklh', 's02_sklh', 'Nama');
+      $crud->set_relation('idthaj', 'db_sis.s01_thaj', 'TahunAjaran');
+      $crud->set_relation('idsklh', 'db_sis.s02_sklh', 'Nama');
       $crud->set_relation('idkls', 's03_kls', 'Nama');
       $crud->set_relation_n_n('siswa', 'd02_ssw', 's05_ssw', 'iddkls', 'idssw', 'Nama');
       $crud->display_as('idthaj', 'Tahun Ajaran');

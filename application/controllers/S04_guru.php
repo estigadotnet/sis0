@@ -26,7 +26,7 @@ class S04_guru extends CI_Controller
             $config['first_url'] = base_url() . 's04_guru/index.html';
         }
 
-        $config['per_page'] = 10;
+        $config['per_page'] = 10000000;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->S04_guru_model->total_rows($q);
         $s04_guru = $this->S04_guru_model->get_limit_data($config['per_page'], $start, $q);

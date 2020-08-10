@@ -25,7 +25,7 @@ class S02_sklh extends CI_Controller
             $config['first_url'] = base_url() . 's02_sklh/index.html';
         }
 
-        $config['per_page'] = 10;
+        $config['per_page'] = 10000000;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->S02_sklh_model->total_rows($q);
         $s02_sklh = $this->S02_sklh_model->get_limit_data($config['per_page'], $start, $q);
@@ -227,26 +227,27 @@ class S02_sklh extends CI_Controller
       $this->session->set_userdata('nama_sklh', $s02_sklh->Nama);
       $this->session->set_userdata('db_aktif', $s02_sklh->Db);
 
-      $db['dsn']	= '';
-      $db['hostname'] = 'localhost';
-      $db['username'] = 'root';
-      $db['password'] = '';
-      $db['database'] = $this->session->userdata('db_aktif');
-      $db['dbdriver'] = 'mysqli';
-      $db['dbprefix'] = '';
-      $db['pconnect'] = FALSE;
-      $db['db_debug'] = (ENVIRONMENT !== 'production');
-      $db['cache_on'] = FALSE;
-      $db['cachedir'] = '';
-      $db['char_set'] = 'utf8';
-      $db['dbcollat'] = 'utf8_general_ci';
-      $db['swap_pre'] = '';
-      $db['encrypt'] = FALSE;
-      $db['compress'] = FALSE;
-      $db['stricton'] = FALSE;
-      $db['failover'] = array();
-      $db['save_queries'] = TRUE;
-      $this->db = $this->load->database($db, true);
+      // $db['dsn']	= '';
+      // $db['hostname'] = 'localhost';
+      // $db['username'] = 'root';
+      // $db['password'] = '';
+      // $db['database'] = $this->session->userdata('db_aktif');
+      // $db['dbdriver'] = 'mysqli';
+      // $db['dbprefix'] = '';
+      // $db['pconnect'] = FALSE;
+      // $db['db_debug'] = (ENVIRONMENT !== 'production');
+      // $db['cache_on'] = FALSE;
+      // $db['cachedir'] = '';
+      // $db['char_set'] = 'utf8';
+      // $db['dbcollat'] = 'utf8_general_ci';
+      // $db['swap_pre'] = '';
+      // $db['encrypt'] = FALSE;
+      // $db['compress'] = FALSE;
+      // $db['stricton'] = FALSE;
+      // $db['failover'] = array();
+      // $db['save_queries'] = TRUE;
+      // $this->db = $this->load->database($db, true);
+      set_db_aktif($this->session->userdata('db_aktif'));
 
       redirect('/');
     }

@@ -26,7 +26,7 @@ class S01_thaj extends CI_Controller
             $config['first_url'] = base_url() . 's01_thaj/index.html';
         }
 
-        $config['per_page'] = 10;
+        $config['per_page'] = 10000000;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->S01_thaj_model->total_rows($q);
         $s01_thaj = $this->S01_thaj_model->get_limit_data($config['per_page'], $start, $q);
