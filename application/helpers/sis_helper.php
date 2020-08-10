@@ -27,6 +27,6 @@ function set_db_aktif($db_aktif) {
   $db['stricton'] = FALSE;
   $db['failover'] = array();
   $db['save_queries'] = TRUE;
-  $ci = get_instance();
+  $ci =& get_instance();
   $ci->db = $ci->load->database($db, true);
 }

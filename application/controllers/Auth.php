@@ -115,26 +115,7 @@ class Auth extends CI_Controller
 				$this->session->set_userdata('db_aktif', $s02_sklh->Db);
 
 				// pindah database sesuai pilihan user saat login
-				$db['dsn']	= '';
-	  		$db['hostname'] = 'localhost';
-	  		$db['username'] = 'root';
-	  		$db['password'] = '';
-	  		$db['database'] = $this->session->userdata('db_aktif');
-	  		$db['dbdriver'] = 'mysqli';
-	  		$db['dbprefix'] = '';
-	  		$db['pconnect'] = FALSE;
-	  		$db['db_debug'] = (ENVIRONMENT !== 'production');
-	  		$db['cache_on'] = FALSE;
-	  		$db['cachedir'] = '';
-	  		$db['char_set'] = 'utf8';
-	  		$db['dbcollat'] = 'utf8_general_ci';
-	  		$db['swap_pre'] = '';
-	  		$db['encrypt'] = FALSE;
-	  		$db['compress'] = FALSE;
-	  		$db['stricton'] = FALSE;
-	  		$db['failover'] = array();
-	  		$db['save_queries'] = TRUE;
-				$this->db = $this->load->database($db, true);
+				set_db_aktif($this->session->userdata('db_aktif'));
 
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 				redirect('/', 'refresh');
@@ -184,7 +165,7 @@ class Auth extends CI_Controller
 	public function logout()
 	{
 		$this->data['title'] = "Logout";
-
+		
 		// log the user out
 		$this->ion_auth->logout();
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2020 at 07:46 PM
+-- Generation Time: Aug 10, 2020 at 05:53 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -421,55 +421,6 @@ INSERT INTO `customers` (`customerNumber`, `customerName`, `contactLastName`, `c
 (495, 'Diecast Collectables', 'Franco', 'Valarie', '6175552555', '6251 Ingle Ln.', NULL, 'Boston', 'MA', '51003', 'USA', 1188, 85100),
 (496, 'Kelly\'s Gift Shop', 'Snowden', 'Tony', '+64 9 5555500', 'Arenales 1938 3\'A\'', NULL, 'Auckland  ', NULL, NULL, 'New Zealand', 1612, 110000),
 (497, '', '', '', '', '', NULL, '', NULL, NULL, '', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `d01_kls`
---
-
-CREATE TABLE `d01_kls` (
-  `iddkls` int(11) NOT NULL,
-  `idthaj` int(11) NOT NULL,
-  `idsklh` int(11) NOT NULL,
-  `idkls` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `d01_kls`
---
-
-INSERT INTO `d01_kls` (`iddkls`, `idthaj`, `idsklh`, `idkls`) VALUES
-(1, 2, 1, 1),
-(2, 3, 1, 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `d02_ssw`
---
-
-CREATE TABLE `d02_ssw` (
-  `iddssw` int(11) NOT NULL,
-  `iddkls` int(11) NOT NULL,
-  `idssw` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `d02_ssw`
---
-
-INSERT INTO `d02_ssw` (`iddssw`, `iddkls`, `idssw`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 3),
-(4, 1, 4),
-(5, 1, 5),
-(6, 2, 1),
-(7, 2, 2),
-(8, 2, 3),
-(9, 2, 4),
-(10, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -12963,8 +12914,7 @@ CREATE TABLE `s01_thaj` (
 
 INSERT INTO `s01_thaj` (`idthaj`, `TahunAjaran`, `SaldoAwal`) VALUES
 (1, '2019/2020', 0),
-(2, '2020/2021', 0),
-(3, '2021/2022', 0);
+(2, '2020/2021', 0);
 
 -- --------------------------------------------------------
 
@@ -12975,89 +12925,17 @@ INSERT INTO `s01_thaj` (`idthaj`, `TahunAjaran`, `SaldoAwal`) VALUES
 CREATE TABLE `s02_sklh` (
   `idsklh` int(11) NOT NULL,
   `Kode` varchar(2) NOT NULL,
-  `Nama` varchar(100) NOT NULL
+  `Nama` varchar(100) NOT NULL,
+  `Db` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `s02_sklh`
 --
 
-INSERT INTO `s02_sklh` (`idsklh`, `Kode`, `Nama`) VALUES
-(1, '01', 'MINU UNGGULAN BOJONEGORO'),
-(2, '02', 'MINU KARAKTER BOJONEGORO');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `s03_kls`
---
-
-CREATE TABLE `s03_kls` (
-  `idkls` int(11) NOT NULL,
-  `Nama` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `s03_kls`
---
-
-INSERT INTO `s03_kls` (`idkls`, `Nama`) VALUES
-(1, '1 KH. BISRI SYANSURI'),
-(2, '1 KH. WACHID HASYIM'),
-(3, '2 KH. ILYAS RUCHIYAT'),
-(4, '2 KH. R. ASNAWI'),
-(5, '3 KH. IDHAM CHOLID'),
-(6, '3 KH. ZAENAL ARIFIN'),
-(7, '4 KH. ZAENUL MUSTHOFA'),
-(8, '4 KH. HASYIM ASYARI');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `s04_guru`
---
-
-CREATE TABLE `s04_guru` (
-  `idguru` int(11) NOT NULL,
-  `Nama` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `s04_guru`
---
-
-INSERT INTO `s04_guru` (`idguru`, `Nama`) VALUES
-(1, 'Sutiyoso'),
-(2, 'Djarot Saiful Hidayat'),
-(3, 'Fauzi Bowo'),
-(4, 'Soerjadi Soedirdja'),
-(5, 'Wiyogo Atmodarminto'),
-(6, 'Soeprapto'),
-(7, 'Nono Taryono');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `s05_ssw`
---
-
-CREATE TABLE `s05_ssw` (
-  `idssw` int(11) NOT NULL,
-  `NIS` varchar(8) NOT NULL,
-  `Nama` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `s05_ssw`
---
-
-INSERT INTO `s05_ssw` (`idssw`, `NIS`, `Nama`) VALUES
-(1, '01200001', 'Ahmad Ziyad Alfahri'),
-(2, '01200002', 'Ainun Maulidia Azzahra'),
-(3, '01200003', 'Aira Aisyah Benny'),
-(4, '01200004', 'Alif Firman Saputra'),
-(5, '01200005', 'Althaf  Haedar Al Hisyam H'),
-(6, '01200006', 'Arjuna Novandra Januar');
+INSERT INTO `s02_sklh` (`idsklh`, `Kode`, `Nama`, `Db`) VALUES
+(1, '01', 'MINU UNGGULAN BOJONEGORO', 'db_sis_unggulan'),
+(2, '02', 'MINU KARAKTER BOJONEGORO', 'db_sis_karakter');
 
 -- --------------------------------------------------------
 
@@ -13092,7 +12970,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$/wEKZLP913L37.tvjMBXSeVf03yykqX6febPKA1y.hj0qw.iE7SF.', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1596886797, 1, 'Administrator', 'istrator', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', '$2y$12$/wEKZLP913L37.tvjMBXSeVf03yykqX6febPKA1y.hj0qw.iE7SF.', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1597056793, 1, 'Administrator', 'istrator', 'ADMIN', '0');
 
 -- --------------------------------------------------------
 
@@ -13135,18 +13013,6 @@ ALTER TABLE `category`
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`customerNumber`);
-
---
--- Indexes for table `d01_kls`
---
-ALTER TABLE `d01_kls`
-  ADD PRIMARY KEY (`iddkls`);
-
---
--- Indexes for table `d02_ssw`
---
-ALTER TABLE `d02_ssw`
-  ADD PRIMARY KEY (`iddssw`);
 
 --
 -- Indexes for table `employees`
@@ -13221,24 +13087,6 @@ ALTER TABLE `s02_sklh`
   ADD PRIMARY KEY (`idsklh`);
 
 --
--- Indexes for table `s03_kls`
---
-ALTER TABLE `s03_kls`
-  ADD PRIMARY KEY (`idkls`);
-
---
--- Indexes for table `s04_guru`
---
-ALTER TABLE `s04_guru`
-  ADD PRIMARY KEY (`idguru`);
-
---
--- Indexes for table `s05_ssw`
---
-ALTER TABLE `s05_ssw`
-  ADD PRIMARY KEY (`idssw`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -13276,16 +13124,6 @@ ALTER TABLE `category`
 --
 ALTER TABLE `customers`
   MODIFY `customerNumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=498;
---
--- AUTO_INCREMENT for table `d01_kls`
---
-ALTER TABLE `d01_kls`
-  MODIFY `iddkls` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `d02_ssw`
---
-ALTER TABLE `d02_ssw`
-  MODIFY `iddssw` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `employees`
 --
@@ -13326,21 +13164,6 @@ ALTER TABLE `s01_thaj`
 --
 ALTER TABLE `s02_sklh`
   MODIFY `idsklh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `s03_kls`
---
-ALTER TABLE `s03_kls`
-  MODIFY `idkls` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `s04_guru`
---
-ALTER TABLE `s04_guru`
-  MODIFY `idguru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `s05_ssw`
---
-ALTER TABLE `s05_ssw`
-  MODIFY `idssw` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `users`
 --
