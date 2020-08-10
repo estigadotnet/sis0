@@ -98,7 +98,7 @@ class Auth extends CI_Controller
 				$this->load->model('Users_model');
 				$users = $this->Users_model->get_by_id($this->session->userdata('user_id'));
 	      $this->session->set_userdata('user_name', $users->first_name);
-				
+
 				// simpan session data tahun ajaran
 				$this->load->model('S01_thaj_model');
 				$s01_thaj = $this->S01_thaj_model->get_by_id($this->input->post('idthaj'));
@@ -112,6 +112,32 @@ class Auth extends CI_Controller
 				$this->session->set_userdata('idsklh', $this->input->post('idsklh'));
 				$this->session->set_userdata('kode_sklh', $s02_sklh->Kode);
 				$this->session->set_userdata('nama_sklh', $s02_sklh->Nama);
+				$this->session->set_userdata('db_aktif', $s02_sklh->Database);
+
+				// simpan session database aktif
+				//$this->session->set_userdata('db_aktif', $s02_sklh->Kode == '01' ? 'db_sis_unggulan' : 'db_sis_karakter');
+				$db['dsn']	= '';
+	  		$db['hostname'] = 'localhost';
+	  		$db['username'] = 'root';
+	  		$db['password'] = '';
+	  		$db['database'] = $this->session->userdata('db_aktif');
+	  		$db['dbdriver'] = 'mysqli';
+	  		$db['dbprefix'] = '';
+	  		$db['pconnect'] = FALSE;
+	  		$db['db_debug'] = (ENVIRONMENT !== 'production');
+	  		$db['cache_on'] = FALSE;
+	  		$db['cachedir'] = '';
+	  		$db['char_set'] = 'utf8';
+	  		$db['dbcollat'] = 'utf8_general_ci';
+	  		$db['swap_pre'] = '';
+	  		$db['encrypt'] = FALSE;
+	  		$db['compress'] = FALSE;
+	  		$db['stricton'] = FALSE;
+	  		$db['failover'] = array();
+	  		$db['save_queries'] = TRUE;
+	      //$CI =& get_instance();
+				//$CI->db = $this->load->database($db, true);
+				$this->db = $this->load->database($db, true);
 
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 				redirect('/', 'refresh');

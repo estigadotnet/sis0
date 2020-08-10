@@ -202,6 +202,25 @@ class Ion_auth_model extends CI_Model
 		$this->config->load('ion_auth', TRUE);
 		$this->load->helper('cookie', 'date');
 		$this->lang->load('ion_auth');
+		$db['dsn']	= '';
+		$db['hostname'] = 'localhost';
+		$db['username'] = 'root';
+		$db['password'] = '';
+		$db['database'] = $this->session->has_userdata('db_aktif') ? $this->session->userdata('db_aktif') : 'db_sis';
+		$db['dbdriver'] = 'mysqli';
+		$db['dbprefix'] = '';
+		$db['pconnect'] = FALSE;
+		$db['db_debug'] = (ENVIRONMENT !== 'production');
+		$db['cache_on'] = FALSE;
+		$db['cachedir'] = '';
+		$db['char_set'] = 'utf8';
+		$db['dbcollat'] = 'utf8_general_ci';
+		$db['swap_pre'] = '';
+		$db['encrypt'] = FALSE;
+		$db['compress'] = FALSE;
+		$db['stricton'] = FALSE;
+		$db['failover'] = array();
+		$db['save_queries'] = TRUE;
 
 		// initialize the database
 		$group_name = $this->config->item('database_group_name', 'ion_auth');
@@ -209,6 +228,7 @@ class Ion_auth_model extends CI_Model
 		{
 			// By default, use CI's db that should be already loaded
 			$CI =& get_instance();
+			$CI->db = $this->load->database($db, true);
 			$this->db = $CI->db;
 		}
 		else
