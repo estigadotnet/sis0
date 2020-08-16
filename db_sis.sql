@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2020 at 05:53 PM
+-- Generation Time: Aug 16, 2020 at 03:32 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -12970,7 +12970,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$/wEKZLP913L37.tvjMBXSeVf03yykqX6febPKA1y.hj0qw.iE7SF.', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1597056793, 1, 'Administrator', 'istrator', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', '$2y$12$/wEKZLP913L37.tvjMBXSeVf03yykqX6febPKA1y.hj0qw.iE7SF.', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1597421434, 1, 'Administrator', 'istrator', 'ADMIN', '0');
 
 -- --------------------------------------------------------
 
@@ -13158,7 +13158,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `s01_thaj`
 --
 ALTER TABLE `s01_thaj`
-  MODIFY `idthaj` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idthaj` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `s02_sklh`
 --
