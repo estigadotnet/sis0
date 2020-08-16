@@ -8,3 +8,11 @@
 	- to-do,
 		- auto nis baru => done
 		- isi dashboard
+
+	8:51 AM 8/15/2020
+	- ubah spp per siswa, diberi pilihan range bulan,
+	  bisa update sekaligus beberapa bulan => done
+	- laporan tunggakan, diberi pilihan per kelas,
+	  agar tidak filtering manual
+	- ada error di transaksi pembayaran untuk siswa yang sudah lulus
+
